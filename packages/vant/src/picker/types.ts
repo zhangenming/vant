@@ -54,3 +54,21 @@ export type PickerCancelEventParams = PickerConfirmEventParams;
 export type PickerChangeEventParams = PickerConfirmEventParams & {
   columnIndex: number;
 };
+
+export type PickerThemeVars = {
+  pickerBackground?: string;
+  pickerToolbarHeight?: string;
+  pickerTitleFontSize?: string;
+  pickerTitleLineHeight?: number | string;
+  pickerActionPadding?: string;
+  pickerActionFontSize?: string;
+  pickerConfirmActionColor?: string;
+  pickerCancelActionColor?: string;
+  pickerOptionFontSize?: string;
+  pickerOptionPadding?: string;
+  pickerOptionTextColor?: string;
+  pickerOptionDisabledOpacity?: number | string;
+  pickerLoadingIconColor?: string;
+  pickerLoadingMaskColor?: string;
+  pickerMaskColor?: string;
+};

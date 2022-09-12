@@ -24,12 +24,21 @@ export default {
     watch(
       theme,
       (newVal, oldVal) => {
-        document.body.classList.remove(`van-doc-theme-${oldVal}`);
-        document.body.classList.add(`van-doc-theme-${newVal}`);
+        document.documentElement.classList.remove(`van-doc-theme-${oldVal}`);
+        document.documentElement.classList.add(`van-doc-theme-${newVal}`);
 
-        const { darkModeClass } = config.site;
+        const { darkModeClass, lightModeClass } = config.site;
         if (darkModeClass) {
-          document.body.classList.toggle(darkModeClass, newVal === 'dark');
+          document.documentElement.classList.toggle(
+            darkModeClass,
+            newVal === 'dark'
+          );
+        }
+        if (lightModeClass) {
+          document.documentElement.classList.toggle(
+            lightModeClass,
+            newVal === 'light'
+          );
         }
       },
       { immediate: true }
@@ -43,6 +52,7 @@ export default {
 
 body {
   min-width: 100vw;
+  background-color: inherit;
 }
 
 .van-doc-theme-light {

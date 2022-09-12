@@ -12,10 +12,10 @@ export {
 } from './function-call';
 
 export type { NotifyProps } from './Notify';
-export type { NotifyType, NotifyOptions } from './types';
+export type { NotifyType, NotifyOptions, NotifyThemeVars } from './types';
 
 declare module 'vue' {
   export interface GlobalComponents {
-    VanNotify: typeof Notify.Component;
+    VanNotify: typeof Notify;
   }
 }

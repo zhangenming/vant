@@ -28,7 +28,14 @@ app.use(ConfigProvider);
 <van-config-provider theme="dark">...</van-config-provider>
 ```
 
-> Tips: 开启深色模式不会改变页面的背景色，需要手动进行设置。
+值得注意的是，开启 Vant 的深色模式只会影响 Vant 组件的 UI，并不会影响全局的文字颜色或背景颜色，你可以参考以下 CSS 来设置一些全局样式：
+
+```css
+.van-theme-dark body {
+  text-color: #f5f5f5;
+  background-color: black;
+}
+```
 
 ### 动态切换
 
@@ -69,10 +76,10 @@ Vant 组件通过丰富的 [CSS 变量](https://developer.mozilla.org/zh-CN/docs
 }
 ```
 
-这些变量的默认值被定义在 `body` 节点上，body 下所有子节点都可以访问到这些变量：
+这些变量的默认值被定义在 `:root` 节点上，HTML 里的所有子节点都可以访问到这些变量：
 
 ```css
-body {
+:root {
   --van-white: #fff;
   --van-blue: #1989fa;
   --van-button-primary-color: var(--van-white);
@@ -88,7 +95,7 @@ body {
 
 ```css
 /* 添加这段样式后，Primary Button 会变成红色 */
-body {
+:root {
   --van-button-primary-background: red;
 }
 ```
@@ -148,7 +155,19 @@ export default {
 };
 ```
 
-> 注意：ConfigProvider 仅影响它的子组件的样式，不影响全局 body 节点。
+> 注意：ConfigProvider 仅影响它的子组件的样式，不影响全局 root 节点。
+
+#### 在 TypeScript 中使用
+
+在 TypeScript 中定义 themeVars 时，建议使用 Vant 提供的 `ConfigProviderThemeVars` 类型，可以提供完善的类型提示：
+
+```ts
+import type { ConfigProviderThemeVars } from 'vant';
+
+const themeVars: ConfigProviderThemeVars = {
+  sliderBarHeight: '4px',
+};
+```
 
 ### 结合深色模式与 CSS 变量
 
@@ -199,8 +218,10 @@ Vant 中的 CSS 变量分为 **基础变量** 和 **组件变量**。组件变�
 
 由于 CSS 变量继承机制的原因，两者的修改方式有一定差异：
 
-- 基础变量只能通过 `body 选择器` 修改，不能通过 `ConfigProvider 组件` 修改。
-- 组件变量可以通过 `body 选择器` 和 `ConfigProvider 组件` 修改。
+- 基础变量只能通过 `:root 选择器` 修改，不能通过 `ConfigProvider 组件` 修改。
+- 组件变量可以通过 `:root 选择器` 和 `ConfigProvider 组件` 修改。
+
+你也可以使用 `.van-theme-light` 和 `.van-theme-dark` 这两个类名选择器来单独修改浅色或深色模式下的基础变量和组件变量。
 
 #### 变量列表
 
@@ -303,5 +324,9 @@ Vant 中的 CSS 变量分为 **基础变量** 和 **组件变量**。组件变�
 组件导出以下类型定义：
 
 ```ts
-import type { ConfigProviderProps, ConfigProviderTheme } from 'vant';
+import type {
+  ConfigProviderProps,
+  ConfigProviderTheme,
+  ConfigProviderThemeVars,
+} from 'vant';
 ```

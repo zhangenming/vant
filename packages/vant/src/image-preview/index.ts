@@ -11,11 +11,12 @@ export type { ImagePreviewProps };
 export type {
   ImagePreviewOptions,
   ImagePreviewInstance,
+  ImagePreviewThemeVars,
   ImagePreviewScaleEventParams,
 } from './types';
 
 declare module 'vue' {
   export interface GlobalComponents {
-    VanImagePreview: typeof ImagePreview.Component;
+    VanImagePreview: typeof ImagePreview;
   }
 }

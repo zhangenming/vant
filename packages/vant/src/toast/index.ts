@@ -16,4 +16,15 @@ export {
 } from './function-call';
 
 export type { ToastProps } from './Toast';
-export type { ToastType, ToastOptions, ToastPosition } from './types';
+export type {
+  ToastType,
+  ToastOptions,
+  ToastPosition,
+  ToastThemeVars,
+} from './types';
+
+declare module 'vue' {
+  export interface GlobalComponents {
+    VanToast: typeof Toast;
+  }
+}

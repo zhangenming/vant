@@ -28,6 +28,15 @@ In takes effect globally, making all Vant components on the page dark.
 <van-config-provider theme="dark">...</van-config-provider>
 ```
 
+The theme prop will not change the text-color or background-color of the page, you can set it manually like this:
+
+```css
+.van-theme-dark body {
+  text-color: #f5f5f5;
+  background-color: black;
+}
+```
+
 > Tips: The theme prop will not change the background color of the page, you need to set it manually.
 
 ### Switch Theme
@@ -69,10 +78,10 @@ Looking at the style of the Button component, you can see that the following var
 }
 ```
 
-The default values of these variables are defined on the `body` node:
+The default values of these variables are defined on the `:root` node:
 
 ```css
-body {
+:root {
   --van-white: #fff;
   --van-blue: #1989fa;
   --van-button-primary-color: var(--van-white);
@@ -88,7 +97,7 @@ You can directly override these CSS variables in the code, and the style of the 
 
 ```css
 /* the Primary Button will turn red */
-body {
+:root {
   --van-button-primary-background: red;
 }
 ```
@@ -150,6 +159,18 @@ export default {
 
 > Tips: ConfigProvider only affects its child components.
 
+#### Use In TypeScript
+
+Using `ConfigProviderThemeVars` type to get code intellisense.
+
+```ts
+import type { ConfigProviderThemeVars } from 'vant';
+
+const themeVars: ConfigProviderThemeVars = {
+  sliderBarHeight: '4px',
+};
+```
+
 ### Combining dark mode with CSS variables
 
 If you need to define CSS variables for dark mode or light mode separately, you can use the `theme-vars-dark` and `theme-vars-light` props.
@@ -197,8 +218,10 @@ CSS variables in Vant are divided into **basic variables** and **component varia
 
 #### Modify Basic Variables
 
-- The basic variables can only be modified through the `body` selector.
-- The component variables can be modified through the `body` selector and `ConfigProvider` component.
+- The basic variables can only be modified through the `:root` selector.
+- The component variables can be modified through the `:root` selector and `ConfigProvider` component.
+
+You can also use the `.van-theme-light` and `.van-theme-dark` class selector to modify basic or component variables in light or dark mode individually.
 
 #### Variables List
 
@@ -299,5 +322,9 @@ There are all **Basic Variables** below, for component CSS Variables, please ref
 The component exports the following type definitions:
 
 ```ts
-import type { ConfigProviderProps, ConfigProviderTheme } from 'vant';
+import type {
+  ConfigProviderProps,
+  ConfigProviderTheme,
+  ConfigProviderThemeVars,
+} from 'vant';
 ```

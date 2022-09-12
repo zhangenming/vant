@@ -19,6 +19,33 @@ Vant follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 
 ## Details
 
+### [v4.0.0-rc.3](https://github.com/vant-ui/vant/compare/v4.0.0-rc.2...v4.0.0-rc.3)
+
+`2022-09-12`
+
+**Feature**
+
+- ConfigProvider: add ConfigProviderThemeVars type [#11034](https://github.com/vant-ui/vant/issues/11034)
+- Notify: add z-index prop [#11032](https://github.com/vant-ui/vant/issues/11032)
+- remove popperjs to reduce install size [#11030](https://github.com/vant-ui/vant/issues/11030)
+
+**Types**
+
+- Toast: fix missing global components type [#11033](https://github.com/vant-ui/vant/issues/11033)
+
+### [v4.0.0-rc.2](https://github.com/vant-ui/vant/compare/v4.0.0-rc.1...v4.0.0-rc.2)
+
+`2022-09-11`
+
+**Breaking Changes**
+
+- attach css variables to :root element [#11026](https://github.com/vant-ui/vant/issues/11026)
+
+**Bug Fixes**
+
+- Dialog: incorrect transform behavior [#11028](https://github.com/vant-ui/vant/issues/11028)
+- Empty: fix opacity in dark mode [#11027](https://github.com/vant-ui/vant/issues/11027)
+
 ### [v4.0.0-rc.1](https://github.com/vant-ui/vant/compare/v4.0.0-rc.0...v4.0.0-rc.1)
 
 `2022-09-10`
